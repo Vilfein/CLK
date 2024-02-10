@@ -27,7 +27,7 @@
                HorizontalAlignment="Center">
                 <Label.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Barevné"
+                        <MenuItem Header="Barevné" 
                               IsCheckable="True" 
                               IsChecked="false"
                               Checked="WithColors"
