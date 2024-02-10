@@ -14,7 +14,7 @@
     <Window.DataContext>
         <local:Clock/>
     </Window.DataContext>
-    
+
     <Grid Background="Black">
         <Viewbox>
             <Label x:Name="MyTime" 
@@ -27,21 +27,32 @@
                HorizontalAlignment="Center">
                 <Label.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Barevné"
+                        <MenuItem Header="Barevné" 
                               IsCheckable="True" 
                               IsChecked="false"
                               Checked="WithColors"
-                              Unchecked="NoColors"/>
-
+                              Unchecked="NoColors">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Colored.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
                         <MenuItem Header="Format 12h" 
                               IsCheckable="True" 
                               Checked="AmericanTime" 
                               Unchecked="EUTime" 
-                              IsChecked="False" />
+                              IsChecked="False">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/twelve.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
                         <Separator/>
                         <MenuItem 
                             Header="Konec" 
-                            Click="EndClock"/>
+                            Click="EndClock">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/power.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </ContextMenu>
                 </Label.ContextMenu>
             </Label>
