@@ -15,7 +15,8 @@
         <local:Clock/>
     </Window.DataContext>
 
-    <Grid Background="Black">
+ <Grid Background="Black">
+
         <Viewbox>
             <Label x:Name="MyTime" 
                Content="{Binding Time}" 
