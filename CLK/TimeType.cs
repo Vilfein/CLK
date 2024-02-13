@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CLK
-{
+﻿namespace CLK
+{/// <summary>
+/// Enum for time format 12/24 hours
+/// </summary>
     public enum TimePattern
     {
         EU,US

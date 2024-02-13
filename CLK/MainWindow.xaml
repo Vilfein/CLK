@@ -40,12 +40,7 @@
                             <MenuItem Header="Azure" Click="ChangeColor"/>
                             <MenuItem Header="Gray" Click="ChangeColor"/>
                             <MenuItem Header="Pink" Click="ChangeColor"/>
-                            <MenuItem Header="Magenta" Click="ChangeColor">
-                                <MenuItem.Icon>
-                                    <Ellipse Fill="Magenta"/>
-                                </MenuItem.Icon>
-                            </MenuItem>
-
+                            <MenuItem Header="Magenta" Click="ChangeColor"/>
                         </MenuItem>
                         <MenuItem Header="Format 12h" 
                               IsCheckable="True" 
@@ -67,7 +62,11 @@
                     </ContextMenu>
                 </TextBlock.ContextMenu>
                 <TextBlock.Effect>
-                    <DropShadowEffect x:Name="Effect" BlurRadius="20" ShadowDepth="1" Color="White"/>
+                    <DropShadowEffect 
+                        x:Name="Effect" 
+                        BlurRadius="20" 
+                        ShadowDepth="1" 
+                        Color="White"/>
                 </TextBlock.Effect>
             </TextBlock>
         </Viewbox>

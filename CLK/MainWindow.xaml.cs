@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace CLK
 {
@@ -12,7 +11,6 @@ namespace CLK
     /// </summary>
     public partial class MainWindow : Window
     {
-        bool colorized;
         Clock? clk;
 
         public MainWindow()
@@ -31,15 +29,13 @@ namespace CLK
             }
         }
 
-
-        void ChangeColor(object sender, RoutedEventArgs e)
+        void ChangeColor(object? sender, RoutedEventArgs e)
         {
-            string value = (sender as MenuItem).Header.ToString();
-            Effect.Color = FromText(value);
-           
+            string? value = (sender as MenuItem)?.Header.ToString();
+            Effect.Color = FromText(value!);           
         }
 
-        private Color FromText(string color)
+        private System.Windows.Media.Color FromText(string color)
         {
             return color switch
             {
@@ -49,25 +45,25 @@ namespace CLK
                 "Blue" => Colors.Blue,
                 "Yellow" => Colors.Yellow,
                 "Orange" => Colors.Orange,
-                "Purple" => Colors.MediumPurple,
+                "Purple" => Colors.MediumOrchid,
                 "Azure" => Colors.Cyan,
                 "Gray" => Colors.Silver,
                 "Pink" => Colors.Pink,
-                "Magenta" => Colors.Magenta
+                "Magenta" => Colors.Magenta,
+                _ => Colors.White
             };
         }
 
-
-        void Colorize()
+        private void Colorize()
         {
-            MenuItem mainItem = CM.Items[0] as MenuItem;
+            MenuItem? mainItem = CM.Items[0] as MenuItem;
 
-            foreach (MenuItem item in mainItem.Items)
+            foreach (MenuItem item in mainItem!.Items)
             {
                 item.Icon = 
                     new Ellipse 
                     {
-                        Fill = new SolidColorBrush(FromText(item.Header.ToString())),
+                        Fill = new SolidColorBrush(FromText(item.Header.ToString()!)),
                         Stroke =Brushes.Black, 
                         StrokeThickness = 1                        
                     };

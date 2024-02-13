@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Windows.Input;
+﻿using System.ComponentModel;
 using System.Windows.Threading;
 
 namespace CLK
@@ -17,7 +10,9 @@ namespace CLK
         private TimePattern pattern;
         private string? strPattern;
         private string? time;
-
+        /// <summary>
+        /// Parameterless Constructor
+        /// </summary>
         public Clock()
         {
             timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
@@ -25,6 +20,9 @@ namespace CLK
             timer.Start();
             Pattern = TimePattern.EU;
         }
+        /// <summary>
+        /// Time pattern
+        /// </summary>
         public TimePattern Pattern
         {
             get => pattern;
@@ -34,7 +32,9 @@ namespace CLK
                 strPattern = value == TimePattern.EU ? "{0:HH:mm:ss}" : "{0:hh:mm:ss}";
             }
         }
-
+        /// <summary>
+        /// Public Time
+        /// </summary>
         public string Time
         {
             get => time ?? ""; 
@@ -44,12 +44,12 @@ namespace CLK
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Time)));
             }
         }
-
-
-
+        /// <summary>
+        /// Sets actual time by Pattern
+        /// </summary>
         private void Timing()
         {
-            this.Time = string.Format(strPattern, DateTime.Now);
+            this.Time = string.Format(strPattern!, DateTime.Now);
         }
     }
 }
