@@ -18,24 +18,34 @@
  <Grid Background="Black">
 
         <Viewbox>
-            <Label x:Name="MyTime" 
-               Content="{Binding Time}" 
+            <TextBlock x:Name="MyTime" 
+               Text="{Binding Time}" 
                FontSize="80"
-               Foreground="White"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
+               Foreground="White"                
                VerticalAlignment="Center"
                HorizontalAlignment="Center">
-                <Label.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Barevné" 
-                              IsCheckable="True" 
-                              IsChecked="false"
-                              Checked="WithColors"
-                              Unchecked="NoColors">
+                <TextBlock.ContextMenu>
+                    <ContextMenu Name="CM">
+                        <MenuItem Header="Barevné" x:Name="ColorItem" >
                             <MenuItem.Icon>
                                 <Image Source="../Resources/Colored.png" />
                             </MenuItem.Icon>
+                            <MenuItem Header="White" Click="ChangeColor"/>
+                            <MenuItem Header="Red" Click="ChangeColor"/>
+                            <MenuItem Header="Green" Click="ChangeColor"/>
+                            <MenuItem Header="Blue" Click="ChangeColor"/>
+                            <MenuItem Header="Yellow" Click="ChangeColor"/>
+                            <MenuItem Header="Orange" Click="ChangeColor"/>
+                            <MenuItem Header="Purple" Click="ChangeColor"/>
+                            <MenuItem Header="Azure" Click="ChangeColor"/>
+                            <MenuItem Header="Gray" Click="ChangeColor"/>
+                            <MenuItem Header="Pink" Click="ChangeColor"/>
+                            <MenuItem Header="Magenta" Click="ChangeColor">
+                                <MenuItem.Icon>
+                                    <Ellipse Fill="Magenta"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+
                         </MenuItem>
                         <MenuItem Header="Format 12h" 
                               IsCheckable="True" 
@@ -55,8 +65,11 @@
                             </MenuItem.Icon>
                         </MenuItem>
                     </ContextMenu>
-                </Label.ContextMenu>
-            </Label>
+                </TextBlock.ContextMenu>
+                <TextBlock.Effect>
+                    <DropShadowEffect x:Name="Effect" BlurRadius="20" ShadowDepth="1" Color="White"/>
+                </TextBlock.Effect>
+            </TextBlock>
         </Viewbox>
     </Grid>
 </Window>

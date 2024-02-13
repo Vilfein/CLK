@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace CLK
@@ -13,19 +14,12 @@ namespace CLK
     {
         bool colorized;
         Clock? clk;
-        DispatcherTimer clrTimmer;
 
         public MainWindow()
         {
             InitializeComponent();
+            Colorize();
             clk = DataContext as Clock;
-
-            clrTimmer = new DispatcherTimer();
-            
-            clrTimmer.Tick += (s, e) => Colored();
-            clrTimmer.Interval = TimeSpan.FromSeconds(1);
-            clrTimmer.Start();
-
             (Content as Grid)!.MouseLeftButtonDown += MainWindow_MouseLeftButtonDown;
         }
 
@@ -37,24 +31,49 @@ namespace CLK
             }
         }
 
-        private void Colored()
-        {
-            if (colorized)
-            {
-                byte R = (byte)new Random().Next(0, 255);
-                byte G = (byte)new Random().Next(0, 255);
-                byte B = (byte)new Random().Next(0, 255);
-                MyTime.Foreground = new SolidColorBrush(Color.FromRgb(R, G, B));
-            }
 
-            else
+        void ChangeColor(object sender, RoutedEventArgs e)
+        {
+            string value = (sender as MenuItem).Header.ToString();
+            Effect.Color = FromText(value);
+           
+        }
+
+        private Color FromText(string color)
+        {
+            return color switch
             {
-                MyTime.Foreground = new SolidColorBrush(Colors.White);
+                "White" => Colors.White,
+                "Red" => Colors.Red,
+                "Green" => Colors.LimeGreen,
+                "Blue" => Colors.Blue,
+                "Yellow" => Colors.Yellow,
+                "Orange" => Colors.Orange,
+                "Purple" => Colors.MediumPurple,
+                "Azure" => Colors.Cyan,
+                "Gray" => Colors.Silver,
+                "Pink" => Colors.Pink,
+                "Magenta" => Colors.Magenta
+            };
+        }
+
+
+        void Colorize()
+        {
+            MenuItem mainItem = CM.Items[0] as MenuItem;
+
+            foreach (MenuItem item in mainItem.Items)
+            {
+                item.Icon = 
+                    new Ellipse 
+                    {
+                        Fill = new SolidColorBrush(FromText(item.Header.ToString())),
+                        Stroke =Brushes.Black, 
+                        StrokeThickness = 1                        
+                    };
             }
         }
 
-        void NoColors(object s, EventArgs e) => colorized = false;
-        void WithColors(object s, EventArgs e) => colorized = true;
         void AmericanTime(object s, EventArgs e) => clk!.Pattern = TimePattern.US;
         void EUTime(object s, EventArgs e) => clk!.Pattern = TimePattern.EU;
         void EndClock(object sender, EventArgs e) => this.Close();
