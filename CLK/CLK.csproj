@@ -6,12 +6,17 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>ClockIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\Colored.png" />
     <None Remove="Resources\power.png" />
     <None Remove="Resources\twelve.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClockIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>

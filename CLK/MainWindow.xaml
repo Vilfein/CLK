@@ -15,8 +15,7 @@
         <local:Clock/>
     </Window.DataContext>
 
- <Grid Background="Black">
-
+    <Grid Background="Black">
         <Viewbox>
             <TextBlock x:Name="MyTime" 
                Text="{Binding Time}" 
@@ -25,8 +24,8 @@
                VerticalAlignment="Center"
                HorizontalAlignment="Center">
                 <TextBlock.ContextMenu>
-                    <ContextMenu Name="CM">
-                        <MenuItem Header="Barevné" x:Name="ColorItem" >
+                    <ContextMenu>
+                        <MenuItem Header="Barevné">
                             <MenuItem.Icon>
                                 <Image Source="../Resources/Colored.png" />
                             </MenuItem.Icon>
@@ -54,7 +53,7 @@
                         <Separator/>
                         <MenuItem 
                             Header="Konec" 
-                            Click="EndClock">
+                            Click="CloseClock">
                             <MenuItem.Icon>
                                 <Image Source="../Resources/power.png"/>
                             </MenuItem.Icon>
