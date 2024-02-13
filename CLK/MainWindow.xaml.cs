@@ -58,6 +58,8 @@ namespace CLK
         {
             MenuItem? mainItem = (((Content as Grid)?.Children[0] as Viewbox)?.Child as TextBlock)?.ContextMenu.Items[0] as MenuItem;
 
+            MenuItem mainItem = (((Content as Grid).Children[0] as Viewbox).Child as TextBlock).ContextMenu.Items[0] as MenuItem;
+
             foreach (MenuItem item in mainItem!.Items)
             {
                 item.Icon =
@@ -72,6 +74,6 @@ namespace CLK
 
         void AmericanTime(object s, EventArgs e) => clk!.Pattern = TimePattern.US;
         void EUTime(object s, EventArgs e) => clk!.Pattern = TimePattern.EU;
-        void CloseClock(object sender, EventArgs e) => this.Close();
+        void EndClock(object sender, EventArgs e) => this.Close();
     }
 }
