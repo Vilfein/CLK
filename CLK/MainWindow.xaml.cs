@@ -32,7 +32,7 @@ namespace CLK
         void ChangeColor(object? sender, RoutedEventArgs e)
         {
             string? value = (sender as MenuItem)?.Header.ToString();
-            Effect.Color = FromText(value!);           
+            Effect.Color = FromText(value!);
         }
 
         private System.Windows.Media.Color FromText(string color)
@@ -56,22 +56,37 @@ namespace CLK
 
         private void Colorize()
         {
-            MenuItem? mainItem = CM.Items[0] as MenuItem;
+            //MenuItem? mainItem = CM.Items[0] as MenuItem;
+
+            MenuItem mainItem = (((Content as Grid).Children[0] as Viewbox).Child as TextBlock).ContextMenu.Items[0] as MenuItem;
 
             foreach (MenuItem item in mainItem!.Items)
             {
-                item.Icon = 
-                    new Ellipse 
+                item.Icon =
+                    new Ellipse
                     {
                         Fill = new SolidColorBrush(FromText(item.Header.ToString()!)),
-                        Stroke =Brushes.Black, 
-                        StrokeThickness = 1                        
+                        Stroke = Brushes.Black,
+                        StrokeThickness = 1
                     };
             }
         }
 
         void AmericanTime(object s, EventArgs e) => clk!.Pattern = TimePattern.US;
         void EUTime(object s, EventArgs e) => clk!.Pattern = TimePattern.EU;
-        void EndClock(object sender, EventArgs e) => this.Close();
+        void CloseClock(object sender, EventArgs e) => this.Close();
+
+
+
+
+
+
+        void fce()
+        {
+            var cc = ((Content as Grid).Children[0] as Viewbox).Child as TextBlock;
+            var mainItem = cc.ContextMenu.Items[0];
+
+        }
+
     }
 }
