@@ -8,8 +8,14 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         MinHeight="100"
-        MinWidth="200"
+        MinWidth="200"       
         Title="Clock" Height="200" Width="400">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+        CaptionHeight="0"
+        ResizeBorderThickness="3" />
+    </WindowChrome.WindowChrome>
 
     <Window.DataContext>
         <local:Clock/>
