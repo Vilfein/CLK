@@ -58,8 +58,6 @@ namespace CLK
         {
             MenuItem? mainItem = (((Content as Grid)?.Children[0] as Viewbox)?.Child as TextBlock)?.ContextMenu.Items[0] as MenuItem;
 
-            MenuItem mainItem = (((Content as Grid).Children[0] as Viewbox).Child as TextBlock).ContextMenu.Items[0] as MenuItem;
-
             foreach (MenuItem item in mainItem!.Items)
             {
                 item.Icon =
